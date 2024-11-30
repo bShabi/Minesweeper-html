@@ -1,0 +1,308 @@
+:root {
+    --primary-color: #6366f1;
+    --bg-color: #f8fafc;
+    --cell-bg: #e2e8f0;
+    --cell-revealed: #ffffff;
+    --border-color: #cbd5e1;
+    --text-color: #1e293b;
+    --mine-color: #ef4444;
+    --flag-color: #22c55e;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Inter', -apple-system, sans-serif;
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 1rem;
+}
+
+.container {
+    width: 100%;
+    max-width: 600px;
+    background: white;
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 1.5rem;
+}
+
+h1 {
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--text-color);
+}
+
+.controls {
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.game-info {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+    font-size: 1.125rem;
+}
+
+select,
+button {
+    padding: 0.5rem 1rem;
+    border: 1px solid var(--border-color);
+    border-radius: 0.5rem;
+    font-size: 0.875rem;
+    background: white;
+    cursor: pointer;
+    transition: all 0.2s;
+}
+
+button {
+    background: var(--primary-color);
+    color: white;
+    border: none;
+    font-weight: 600;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+#gameBoard {
+    display: grid;
+    gap: 4px;
+    margin: 0 auto;
+}
+
+.cell {
+    aspect-ratio: 1;
+    border: none;
+    background: var(--cell-bg);
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: all 0.2s;
+    border-radius: 4px;
+}
+
+.cell:hover:not(.revealed) {
+    background: #d1d5db;
+}
+
+.cell.revealed {
+    background: var(--cell-revealed);
+}
+
+.cell.mine {
+    background: var(--mine-color);
+    color: white;
+}
+
+.cell.flagged {
+    background: var(--flag-color);
+    color: white;
+}
+
+.number-1 {
+    color: #2563eb;
+}
+
+.number-2 {
+    color: #16a34a;
+}
+
+.number-3 {
+    color: #dc2626;
+}
+
+.number-4 {
+    color: #4f46e5;
+}
+
+.number-5 {
+    color: #9f1239;
+}
+
+.number-6 {
+    color: #0891b2;
+}
+
+.number-7 {
+    color: #000000;
+}
+
+.number-8 {
+    color: #525252;
+}
+
+#timer {
+    font-family: monospace;
+    font-size: 1.25rem;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 1rem;
+    }
+
+    .controls {
+        flex-direction: column;
+    }
+
+    .cell {
+        font-size: 0.875rem;
+    }
+}
+
+/* Add or update these styles in your existing CSS */
+
+@media (max-width: 480px) {
+    .container {
+        padding: 0.75rem;
+        margin: 0;
+        max-width: 100%;
+        min-height: 100vh;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .header {
+        margin-bottom: 1rem;
+    }
+
+    h1 {
+        font-size: 1.25rem;
+    }
+
+    .controls {
+        flex-direction: column;
+        gap: 0.5rem;
+        margin-bottom: 1rem;
+    }
+
+    .game-info {
+        font-size: 1rem;
+    }
+
+    select,
+    button {
+        padding: 0.75rem;
+        font-size: 1rem;
+        min-height: 44px;
+        /* Better touch targets */
+    }
+
+    #gameBoard {
+        flex: 1;
+        width: 100%;
+        max-width: 100vmin;
+        margin: 0 auto;
+        gap: 2px;
+    }
+
+    .cell {
+        font-size: 1rem;
+        min-width: 32px;
+        min-height: 32px;
+        -webkit-tap-highlight-color: transparent;
+        /* Remove tap highlight on mobile */
+        touch-action: manipulation;
+        /* Better touch handling */
+    }
+
+    #timer {
+        font-size: 1rem;
+        background: var(--bg-color);
+        padding: 0.25rem 0.5rem;
+        border-radius: 0.25rem;
+    }
+
+    /* Prevent long press context menu */
+    body {
+        -webkit-touch-callout: none;
+        -webkit-user-select: none;
+        user-select: none;
+        overscroll-behavior: contain;
+        padding: 0;
+    }
+}
+/* Update these styles in your CSS */
+body {
+font-family: 'Inter', -apple-system, sans-serif;
+background-color: var(--bg-color);
+color: var(--text-color);
+min-height: 100vh;
+display: flex;
+align-items: center;
+justify-content: center;
+padding: 0; /* Remove padding */
+}
+
+.container {
+width: 100%;
+max-width: 600px;
+background: white;
+padding: 1rem;
+border-radius: 1rem;
+box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+display: flex;
+flex-direction: column;
+min-height: 100vh;
+}
+
+#gameBoard {
+display: grid;
+gap: 2px;
+margin: 0 auto;
+padding: 0.5rem;
+max-width: 100%;
+overflow: hidden; /* Prevent overflow */
+flex: 1;
+}
+
+.cell {
+width: 100%;
+aspect-ratio: 1;
+min-width: 20px; /* Smaller minimum size */
+min-height: 20px;
+font-size: clamp(0.75rem, 2vw, 1rem); /* Responsive font size */
+}
+
+@media (max-width: 480px) {
+.container {
+padding: 0.5rem;
+border-radius: 0; /* Remove border radius on mobile */
+}
+
+.header {
+margin-bottom: 0.5rem;
+}
+
+.controls {
+margin-bottom: 0.5rem;
+}
+
+.game-info {
+margin-bottom: 0.5rem;
+}
+
+#gameBoard {
+gap: 1px;
+padding: 0.25rem;
+}
+}
